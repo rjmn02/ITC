@@ -1,0 +1,11 @@
+body{
+    background-color: black;
+}
+main{
+    color: white;
+}
+.header{
+    background-color: steelblue;
+    width: 100%;
+    text-align: center;
+}
