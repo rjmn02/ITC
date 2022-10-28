@@ -1,5 +1,7 @@
 body{
     background-color: black;
+    font-family: 'Open Sans', sans-serif;
+
 }
 .header{
     background-color: steelblue;
@@ -19,7 +21,6 @@ body{
     border-radius: 10px;
     padding: 70px;
     transition: color 170ms, background-color 170ms;
-
 }
 .nav-button:hover{
     color: black;
