@@ -28,3 +28,6 @@ body{
 .nav-button:active{
     transform: scale(0.95);
 }
+footer{
+    background-color: aliceblue;
+}
