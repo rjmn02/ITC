@@ -2,7 +2,7 @@ function compute(){
     let incomeTax
     let result = document.getElementById("result")
     let income = document.getElementById("income").value
-    if(income < 250000){
+    if(income <= 250000){
 
         incomeTax = 0
         result.textContent = "INCOME TAX: PHP " + incomeTax 
