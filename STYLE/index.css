@@ -1,0 +1,30 @@
+body{
+    background-color: black;
+}
+.header{
+    background-color: steelblue;
+    width: 100%;
+    text-align: center;
+}
+.nav{
+    display: grid;
+    grid-template-columns: auto auto;
+    grid-template-rows: auto auto;
+    justify-content: center;
+    gap: 20px 20px;
+}
+.nav-button{
+    background-color: blueviolet;
+    color: white;
+    border-radius: 10px;
+    padding: 70px;
+    transition: color 170ms, background-color 170ms;
+
+}
+.nav-button:hover{
+    color: black;
+    background-color: white;
+}
+.nav-button:active{
+    transform: scale(0.95);
+}
