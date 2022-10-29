@@ -1,4 +1,3 @@
-
 function factorial(){
     let num = document.getElementById("integer").value
     let factorial = 1, i = 1
@@ -8,6 +7,7 @@ function factorial(){
     }
     document.getElementById("factorial").textContent = "Factorial (n!): "+ factorial
 }
+
 function sum(){
     let num = document.getElementById("integer").value
     let sum = 0, i = 0
@@ -28,6 +28,7 @@ function average(){
     document.getElementById("average").textContent = " The Average of the first n numbers: " + average
 
 }
+
 function calculate(){
     factorial()
     sum()
