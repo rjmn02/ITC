@@ -1,4 +1,4 @@
-// ASSIGNMENT 1 FUNCTIONS
+
 
 function ftc(){
     let text = document.getElementById("tempInC")
