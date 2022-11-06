@@ -12,50 +12,107 @@
 
         <title>ASSIGNMENT 4</title>
     </head>
-    <body>
-        <header class="header">
-            <h1>ASSIGNMENT 4: Simple Payroll</h1>
-        </header>
-        <main>
-            <div class="form">
-                <div class="form-items"><label for="employee-name">Employee Name:</label>
-                <input type="text" id="employee-name"></div>
+    <body>      
+        <h1>SIMPLE PAY ROLL</h1>
+        
+        EMPLOYEE NAME <input type="text" id="name">
+        DAYS WORKED <input type="text" id="worked">
+        DAILY RATE <input type="text" id="rate">
+        DEDUCTION AMOUNT <input type="text" id="deduction">
+        <button onclick="compute()">Add Employee</button>
+        <br>
+        No. of Employee:<input type="number" id="emp" readonly></input>
+        <button onclick="clearlist()">Clear List</button>
+        Delete Employee number: <input type="number" id="delitem">
+        <button onclick="deleteitem()" >Delete</button>  
+        <p id="emplist"></p>
+        
+        <script>T    
+            function initlist(){
+                list=[];
+                document.getElementById("emp").value=list.length;
+                document.getElementById("emplist").innerHTML="";
+            }L 
+            function clearlist(){
+                var toclear;
+                toclear=confirm("Are you sure you want to delete all employee(s) from the list ?");
+                if (toclear) {
+                     initlist();
+                }    
+            }
+            function compute(){
+        
+                 var employee = {
+        
+                    "gross": function gross(){
+                         return Math.round(this.worked*this.rate); 
+                       },"net": function net(){
+                        return Math.round(this.worked*this.rate-this.deduction); 
+                        }
+                };
+                
+                  employee.name=document.getElementById("name").value;
+                  employee.worked=document.getElementById("worked").value;
+                  employee.rate=document.getElementById("rate").value;
+                  employee.deduction=document.getElementById("deduction").value;
+                  
+                  list.push(employee);
+                  document.getElementById("emp").value=list.length;
+                  showlist();
+            }
+            function deleteitem(){
+                var todelete;
+                var itemno;
+                itemno=document.getElementById("delitem").value;
+                todelete=confirm("Are you sure you want to delete employee no. "+itemno+"?");
+        
+                if (todelete) {
+                    list.splice(itemno-1,1);
+                    document.getElementById("emp").value=emplist.length;
+                     showlist();   
+                }
+            }
 
-                <div class="form-items"><label for="days-worked">Days Worked:</label>
-                <input type="number" id="days-worked"></div>
+            function showlist(){
+                var i,l,totalamount,ln;
+                var theader,tbody,tfooter;
+        
+                theader ="<thead>";
+                theader+="<tr>";
+                theader+='<th style="text-align:center" >No.</th>';
+                theader+='<th style="text-align:center" >Name</th>';
+                theader+="<th>Days Worked</th>";
+                theader+='<th style="text-align:center">Daily Rate</th>';
+                theader+="<th>Gross Pay</th>";
+                theader+="<th>Deduction Amount</th>";
+                theader+="<th>Net Pay</th>";
+                theader+="</tr>";
+                theader+="</thead>";
 
-                <div class="form-items"><label for="daily-rate">Daily Rate:</label>
-                <input type="number" id="daily-rate"></div>
-
-                <div class="form-items"><label for="deduct-amount">Deduction Amount:</label>
-                <input type="number" id="deduct-amount"></div>
-
-                <div class="form-items"><button onclick="add()">ADD</button></div>
-                <br>
-
-                <div class="form-items"><label for="item-delete-num">Delete Item:</label>
-                <input type="number" id="item-delete-num">
-                <button onclick="deleteItem()">DELETE</button></div>
-
-            </div>
-            <br>
-            <table>
-                <tr>
-                    <th>No.</th>
-                    <th>Employee Name</th>
-                    <th>Days Worked</th>
-                    <th>Daily Rate</th>
-                    <th>Gross Pay</th>
-                    <th>Employee Name</th>
-                    <th>Deduction Amount </th>
-                    <th>Net Pay</th>
-                </tr>
-            </table>
-        </main>
+                l = list.length;
+        
+                for (i=0,tbody='';i<l;i++){
+        
+                    ln=i+1;    
+        
+                    tbody += "<tr>"
+                        +'<td style="text-align:center">'+ln+' </td>'
+                        +'<td style="text-align:center">'+list[i].name+' </td>'
+                        +'<td style="text-align:center">'+list[i].worked+'</td>'
+                        +'<td style="text-align:center">'+list[i].rate+'</td>'
+                        +'<td style="text-align:center">'+list[i].gross()+'</td>'    
+                        +'<td style="text-align:center">'+list[i].deduction+'</td>'
+                        +'<td style="text-align:center">'+list[i].net()+'</td>'
+                        +"</tr>";
+                }
+                tfooter ="<tfoot>";
+                document.getElementById("emplist").innerHTML=
+                "<table>"+theader+tbody+tfooter+"</table";
+            }
+        </script>
         <footer>
             <hr>
             <a href="index.html"><button>BACK TO HOME</button></a>
         </footer>
-        <script src="script4.js"></script>
     </body>
 </html>
