@@ -1,7 +1,0 @@
-function deleteItem(){
-
-}
-
-function add(){
-    
-}
