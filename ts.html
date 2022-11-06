@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+
+
+<html>
+<head>
+</head>
+<body>      
+<h1>SIMPLE PAY ROLL</h1>
+
+EMPLOYEE NAME <input type="text" id="name">
+DAYS WORKED <input type="text" id="worked">
+DAILY RATE <input type="text" id="rate">
+DEDUCTION AMOUNT <input type="text" id="deduction">
+<button onclick="computestuff()">Add Employee</button>
+<br>
+No. of Employee:<input type="number" id="emp" readonly></input>
+<button onclick="clearlist()">Clear List</button>
+Delete Employee number: <input type="number" id="delitem">
+<button onclick="deleteitem()" >Delete</button>  
+<p id="emplist"></p>
+
+<script>
+    //INTITI LIST    
+    function initlist(){
+        list=[];
+        document.getElementById("emp").value=list.length;
+        document.getElementById("emplist").innerHTML="";
+    }
+   //CLEAR ALL 
+    function clearlist(){
+        var toclear;
+        toclear=confirm("Are you sure you want to delete all employee(s) from the list ?");
+        if (toclear) {
+             initlist();
+        }    
+    }
+    //COMPUTE SOME STUFF AND DISPLAY
+    function computestuff(){
+
+         var employee = {
+
+            "gross": function gross(){
+                 return Math.round(this.worked*this.rate); 
+               },"net": function net(){
+                return Math.round(this.worked*this.rate-this.deduction); 
+                }
+        };
+        
+          employee.name=document.getElementById("name").value;
+          employee.worked=document.getElementById("worked").value;
+          employee.rate=document.getElementById("rate").value;
+          employee.deduction=document.getElementById("deduction").value;
+          
+          //ADD TO LIST
+          list.push(employee);
+         //EMPLOYEE LENGHT
+          document.getElementById("emp").value=list.length;
+          showlist();
+    }
+    //DELETE EMPLOYEES
+    function deleteitem(){
+        var todelete;
+        var itemno;
+        itemno=document.getElementById("delitem").value;
+        todelete=confirm("Are you sure you want to delete employee no. "+itemno+"?");
+
+        if (todelete) {
+            list.splice(itemno-1,1);
+            document.getElementById("emp").value=emplist.length;
+             showlist();   
+        }
+    }
+    // TEXT STYLES ON THE LIST OF EMPLOYEE & DISPLAY
+    function showlist(){
+        var i,l,totalamount,ln;
+        var theader,tbody,tfooter;
+
+        //LIST TEXT;
+        theader ="<thead>";
+        theader+="<tr>";
+        theader+='<th style="text-align:center" >No.</th>';
+        theader+='<th style="text-align:center" >Name</th>';
+        theader+="<th>Days Worked</th>";
+        theader+='<th style="text-align:center">Daily Rate</th>';
+        theader+="<th>Gross Pay</th>";
+        theader+="<th>Deduction Amount</th>";
+        theader+="<th>Net Pay</th>";
+        theader+="</tr>";
+        theader+="</thead>";
+     //TABLE BODY
+        l = list.length;
+
+        for (i=0,tbody='';i<l;i++){
+
+            ln=i+1;    
+
+            tbody += "<tr>"
+                +'<td style="text-align:center">'+ln+' </td>'
+                +'<td style="text-align:center">'+list[i].name+' </td>'
+                +'<td style="text-align:center">'+list[i].worked+'</td>'
+                +'<td style="text-align:center">'+list[i].rate+'</td>'
+                +'<td style="text-align:center">'+list[i].gross()+'</td>'    
+                +'<td style="text-align:center">'+list[i].deduction+'</td>'
+                +'<td style="text-align:center">'+list[i].net()+'</td>'
+                +"</tr>";
+        }
+        //TO DISPLAY ALL;
+        tfooter ="<tfoot>";
+        document.getElementById("emplist").innerHTML=
+        "<table>"+theader+tbody+tfooter+"</table";
+    }
+</script>
+</body>
+</html>
