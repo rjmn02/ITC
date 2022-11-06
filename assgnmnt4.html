@@ -16,13 +16,13 @@
         <h1>SIMPLE PAY ROLL</h1>
         
         EMPLOYEE NAME <input type="text" id="name">
-        DAYS WORKED <input type="text" id="worked">
-        DAILY RATE <input type="text" id="rate">
-        DEDUCTION AMOUNT <input type="text" id="deduction">
-        <button onclick="add()">Add Employee</button>
+        DAYS WORKED <input type="number" id="worked">
+        DAILY RATE <input type="number" id="rate">
+        DEDUCTION AMOUNT <input type="number" id="deduction">
+        <button onclick="addEmployee()">Add Employee</button>
         <br>
         No. of Employee:<input type="number" id="emp" readonly></input>
-        <button onclick="clear()">Clear List</button>
+        <button onclick="clearList()">Clear List</button>
         Delete Employee number: <input type="number" id="delitem">
         <button onclick="deleteItem()" >Delete</button>  
         <p id="emplist"></p>
@@ -33,14 +33,14 @@
                 document.getElementById("emp").value=list.length;
                 document.getElementById("emplist").innerHTML="";
             }L 
-            function clear(){
+            function clearList(){
                 var toclear;
                 toclear=confirm("Are you sure you want to delete all employee(s) from the list ?");
                 if (toclear) {
                      initlist();
                 }    
             }
-            function add(){
+            function addEmployee(){
         
                  var employee = {
         
