@@ -19,7 +19,7 @@
         DAYS WORKED <input type="text" id="worked">
         DAILY RATE <input type="text" id="rate">
         DEDUCTION AMOUNT <input type="text" id="deduction">
-        <button onclick="compute()">Add Employee</button>
+        <button onclick="add()">Add Employee</button>
         <br>
         No. of Employee:<input type="number" id="emp" readonly></input>
         <button onclick="clearlist()">Clear List</button>
@@ -40,7 +40,7 @@
                      initlist();
                 }    
             }
-            function compute(){
+            function add(){
         
                  var employee = {
         
