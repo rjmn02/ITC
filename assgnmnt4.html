@@ -22,9 +22,9 @@
         <button onclick="add()">Add Employee</button>
         <br>
         No. of Employee:<input type="number" id="emp" readonly></input>
-        <button onclick="clearlist()">Clear List</button>
+        <button onclick="clear()">Clear List</button>
         Delete Employee number: <input type="number" id="delitem">
-        <button onclick="deleteitem()" >Delete</button>  
+        <button onclick="deleteItem()" >Delete</button>  
         <p id="emplist"></p>
         
         <script>T    
@@ -33,7 +33,7 @@
                 document.getElementById("emp").value=list.length;
                 document.getElementById("emplist").innerHTML="";
             }L 
-            function clearlist(){
+            function clear(){
                 var toclear;
                 toclear=confirm("Are you sure you want to delete all employee(s) from the list ?");
                 if (toclear) {
@@ -60,7 +60,7 @@
                   document.getElementById("emp").value=list.length;
                   showlist();
             }
-            function deleteitem(){
+            function deleteItem(){
                 var todelete;
                 var itemno;
                 itemno=document.getElementById("delitem").value;
