@@ -12,8 +12,10 @@
 
         <title>ASSIGNMENT 4</title>
     </head>
-    <body>      
-        <h1>SIMPLE PAY ROLL</h1>
+    <body>
+        <header class="header">
+            <h1>SIMPLE PAY ROLL</h1>
+        </header>      
         
         EMPLOYEE NAME <input type="text" id="name">
         DAYS WORKED <input type="number" id="worked">
@@ -28,16 +30,17 @@
         <p id="emplist"></p>
         
         <script>    
-            function initlist(){
+            function initiateList(){
                 list=[];
                 document.getElementById("emp").value=list.length;
                 document.getElementById("emplist").innerHTML="";
-            }L 
+            }
+
             function clearList(){
                 var toclear;
                 toclear=confirm("Are you sure you want to delete all employees from the list ?");
                 if (toclear) {
-                     initlist();
+                     initiateList();
                 }    
             }
             function addEmployee(){
@@ -58,7 +61,7 @@
                   
                   list.push(employee);
                   document.getElementById("emp").value=list.length;
-                  showlist();
+                  showList();
             }
             function deleteItem(){
                 var todelete;
@@ -73,7 +76,7 @@
                 }
             }
 
-            function showlist(){
+            function showList(){
                 var i,l,totalamount,ln;
                 var theader,tbody,tfooter;
         
@@ -109,6 +112,10 @@
                 document.getElementById("emplist").innerHTML=
                 "<table>"+theader+tbody+tfooter+"</table";
             }
+
+
+
+            initiateList()
         </script>
         <footer>
             <hr>
